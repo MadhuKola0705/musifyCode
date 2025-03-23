@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ecfad7;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+nav {
+    font-family: "Ubuntu", sans-serif;
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    height: 50px;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    padding: 0 20px;
+}
+
+nav ul li {
+    padding: 0 12px;
+    cursor: pointer;
+}
+
+.brand img {
+    width: 50px;
+    padding: 0 8px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.container {
+    min-height: 59vh;
+    background-color: black;
+    color: white;
+    font-family: "Varela Round", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    margin: 23px auto;
+    width: 80%;
+    max-width: 1200px;
+    border-radius: 12px;
+    padding: 20px;
+    /*background-image: url("https://c4.wallpaperflare.com/wallpaper/675/698/454/headphones-black-white-akg-wallpaper-preview.jpg");*/
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.songlist {
+    width: 60%;
+    z-index: 1;
+}
+
+.songlist h1 {
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.current-album-art {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.current-album-art img {
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.now-playing {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #1DB954;
+}
+
+.bottom {
+    position: sticky;
+    height: auto;
+    padding: 20px 0;
+    background-color: black;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#myprogressbar {
+    width: 80%;
+    max-width: 600px;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.icons i {
+    cursor: pointer;
+    margin: 0 15px;
+    transition: all 0.3s ease;
+}
+
+.icons i:hover {
+    transform: scale(1.1);
+    color: #1DB954;
+}
+
+.songitemcontainer {
+    margin-top: 30px;
+    max-height: 50vh;
+    overflow-y: auto;
+    padding-right: 10px;
+    /* Scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+}
+
+.songitemcontainer::-webkit-scrollbar {
+    width: 5px;
+}
+
+.songitemcontainer::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+.songitem {
+    height: 50px;
+    display: flex; 
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+    margin: 12px 0;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 44px;
+    padding: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.songitem:hover {
+    transform: scale(1.02);
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+.songitem img {
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.songName {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 10px;
+}
+
+.timestamp {
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.timestamp i {
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+.timestamp i:hover {
+    color: #1DB954;
+}
+
+.songinfo {
+    position: relative;
+    font-family: "Varela Round", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.songinfo img {
+    opacity: 0;
+    transition: opacity 0.4s ease-in;
+    margin-right: 10px;
+    height: 30px;
+}
+
+#mastersongname {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%;
+}
+
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 95%;
+        padding: 15px;
+        margin: 15px auto;
+    }
+    
+    .songlist, .current-album-art {
+        width: 100%;
+    }
+    
+    .current-album-art {
+        margin-top: 20px;
+    }
+    
+    nav ul {
+        padding: 0 10px;
+    }
+    
+    .brand {
+        font-size: 22px;
+    }
+    
+    #myprogressbar {
+        width: 90%;
+    }
+    
+    .icons i {
+        margin: 0 10px;
+    }
+    
+    .songitem {
+        height: 45px;
+    }
+    
+    .songinfo {
+        flex-direction: column;
+    }
+    
+    .songinfo img {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    nav ul li:not(.brand) {
+        display: none;
+    }
+    
+    .brand {
+        margin: 0 auto;
+    }
+    
+    .container {
+        margin: 10px auto;
+        min-height: 50vh;
+    }
+    
+    .songlist h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .songitem {
+        height: 40px;
+    }
+    
+    .icons i {
+        font-size: 30px !important;
+        margin: 0 8px;
+    }
+    
+    .timestamp {
+        font-size: 0.9rem;
+    }
+}
+
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+}
+
+.songlist {
+    position: relative;
+}
+
+
+.bx-pause-circle, .bx-play-circle:hover {
+    color: #1DB954;
+}
